@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .wrap{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            transition: 1s;
+        }
+        .search{
+            width: 60%;
+            height: 60px;
+            border: none;
+            background-color: rgba(0, 0,  0, 0.5);
+            border-radius: 20px;
+            color: #fff;
+            font-size: 24px;
+            padding: 0 20px;
+            outline: none;
+            user-select: none;
+            font-family: monserat;
+
+
+        }
+        .search:hover{
+            background-color: white;
+            color: black;
+            opacity: 0.5;
+            transition: 2s;
+        }
+        .btn{
+            width: 10%;
+            height: 60px;
+            margin-left: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:hover{
+            background-color: black;
+            color: white;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap" id="wrap">
+        <input type="text" id="search" class="search" >
+        <button id="btn" class="btn">Пошук</button>
+    </div>
+    <script>
+        getPhoto()
+        let x = setInterval(()=>{
+            getPhoto()
+        },2000)
+       
+        let y;
+        btn.onclick = function (){
+            let s = search.value
+            y = setInterval(()=>{
+                getPhoto(s)
+            }, 2000)
+            search.value = ''
+
+        
+       
+        }
+        search.onclick = function (){
+            clearInterval(x)
+            clearInterval(y)
+        }
+        function getPhoto(s = 'random'){
+            fetch('https://source.unsplash.com/1920x1080/?' +s)
+        .then(res=>{
+            console.log(res.url)
+            wrap.style.backgroundImage = 'url('+res.url+')'
+        })
+
+        }
+
+      
+    </script>
+</body>
+</html>
