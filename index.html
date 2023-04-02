@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .wrap{
+
+        .wrap {
             width: 100%;
             height: 100vh;
             display: flex;
@@ -20,11 +22,12 @@
             background-size: cover;
             transition: 1s;
         }
-        .search{
+
+        .search {
             width: 60%;
             height: 60px;
             border: none;
-            background-color: rgba(0, 0,  0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5);
             border-radius: 20px;
             color: #fff;
             font-size: 24px;
@@ -35,62 +38,75 @@
 
 
         }
-        .search:hover{
+
+        .search:hover {
             background-color: white;
             color: black;
             opacity: 0.5;
             transition: 2s;
         }
-        .btn{
+
+        .btn {
             width: 10%;
             height: 60px;
             margin-left: 20px;
             border: none;
             border-radius: 5px;
         }
-        .btn:hover{
+
+        .btn:hover {
             background-color: black;
             color: white;
             transition: 1s;
         }
     </style>
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1VETT15F7G"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-1VETT15F7G');
+</script>
+
 <body>
     <div class="wrap" id="wrap">
-        <input type="text" id="search" class="search" >
+        <input type="text" id="search" class="search">
         <button id="btn" class="btn">Пошук</button>
     </div>
     <script>
         getPhoto()
-        let x = setInterval(()=>{
+        let x = setInterval(() => {
             getPhoto()
-        },2000)
-       
+        }, 2000)
+
         let y;
-        btn.onclick = function (){
+        btn.onclick = function () {
             let s = search.value
-            y = setInterval(()=>{
+            y = setInterval(() => {
                 getPhoto(s)
             }, 2000)
             search.value = ''
 
-        
-       
+
+
         }
-        search.onclick = function (){
+        search.onclick = function () {
             clearInterval(x)
             clearInterval(y)
         }
-        function getPhoto(s = 'random'){
-            fetch('https://source.unsplash.com/1920x1080/?' +s)
-        .then(res=>{
-            console.log(res.url)
-            wrap.style.backgroundImage = 'url('+res.url+')'
-        })
+        function getPhoto(s = 'random') {
+            fetch('https://source.unsplash.com/1920x1080/?' + s)
+                .then(res => {
+                    console.log(res.url)
+                    wrap.style.backgroundImage = 'url(' + res.url + ')'
+                })
 
         }
 
-      
+
     </script>
 </body>
+
 </html>
